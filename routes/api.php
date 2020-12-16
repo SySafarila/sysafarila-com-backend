@@ -23,3 +23,5 @@ Route::prefix('v1')->group(function () {
     Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
     Route::post('/posts', [PostsController::class, 'store'])->name('posts.store');
 });
+
+// tess
