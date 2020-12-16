@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\AuthController;
 use App\Http\Controllers\api\PostsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::prefix('v1')->group(function () {
     Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
     Route::post('/posts', [PostsController::class, 'store'])->name('posts.store');
+    Route::post('/register', [AuthController::class, 'register'])->name('posts.register');
 });
-
-// tess
