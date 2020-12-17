@@ -11,6 +11,11 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         if (User::where('email', $request->email)->first()) {
+            return response()->json([
+                'message' => 'Failed',
+                'status' => false
+            ]);
+        } else {
             User::create([
                 // $table->string('uid');
                 // $table->string('name');
@@ -24,11 +29,6 @@ class AuthController extends Controller
             return response()->json([
                 'message' => 'Success',
                 'status' => true
-            ]);
-        } else {
-            return response()->json([
-                'message' => 'Failed',
-                'status' => false
             ]);
         }
     }
