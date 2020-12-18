@@ -16,7 +16,7 @@ class AllowedOrrigins
      */
     public function handle(Request $request, Closure $next)
     {
-        $allowed = 'https://sysafarila.tech';
+        $allowed = 'https://sysafarila.tech/';
 
         $origin = request()->server('HTTP_REFERER');
 
@@ -25,7 +25,8 @@ class AllowedOrrigins
         } else {
             return response()->json([
                 'message' => 'Your origin is blocked.',
-                'status' => false
+                'status' => false,
+                'origin' => $origin
             ]);
         }
     }
