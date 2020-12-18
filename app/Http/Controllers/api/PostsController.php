@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Validator;
 
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('origin');
+    }
+
     public function index()
     {
         $posts = Post::paginate(10);
