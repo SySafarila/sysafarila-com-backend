@@ -33,8 +33,8 @@ class PostsController extends Controller
         //     ]);
         // }
 
-        return response()->json($origin = request()->server('HTTP_REFERER'));
-        // return response()->json($posts);
+        // return response()->json($origin = request()->server('HTTP_REFERER'));
+        return response()->json($posts);
     }
 
     public function store(Request $request)
