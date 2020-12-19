@@ -12,7 +12,7 @@ class PostsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('origin');
+        // $this->middleware('origin');
     }
 
     public function index()
