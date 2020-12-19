@@ -19,7 +19,7 @@ class AllowedOrrigins
         $allowed = 'https://sysafarila.tech/';
 
         $origin = request()->server('HTTP_REFERER');
-        $origin2 = Request::headers->get('referer');
+        $origin2 = $_SERVER['HTTP_REFERER'];
 
         if ($origin == $allowed) {
             return $next($request);
