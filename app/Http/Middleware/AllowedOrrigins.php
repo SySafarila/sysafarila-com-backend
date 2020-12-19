@@ -19,6 +19,7 @@ class AllowedOrrigins
         $allowed = 'https://sysafarila.tech/';
 
         $origin = request()->server('HTTP_REFERER');
+        $origin2 = Request::headers->get('referer');
 
         if ($origin == $allowed) {
             return $next($request);
@@ -26,7 +27,8 @@ class AllowedOrrigins
             return response()->json([
                 'message' => 'Your origin is blocked.',
                 'status' => false,
-                'origin' => $origin
+                'origin' => $origin,
+                'origin2' => $origin2
             ]);
         }
     }
