@@ -33,7 +33,7 @@ class PostsController extends Controller
         //     ]);
         // }
 
-        return response()->json($posts, 200);
+        return response()->json($posts);
     }
 
     public function store(Request $request)
