@@ -24,4 +24,7 @@ Route::prefix('v1')->group(function () {
     Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
     Route::post('/posts', [PostsController::class, 'store'])->name('posts.store')->middleware('origin');
     Route::post('/auth/reg', [AuthController::class, 'register']);
+    Route::get('/origin', function () {
+        return request()->server('HTTP_REFERER');
+    });
 });
