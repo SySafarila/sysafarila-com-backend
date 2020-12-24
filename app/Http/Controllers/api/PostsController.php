@@ -37,6 +37,13 @@ class PostsController extends Controller
         return response()->json($posts);
     }
 
+    public function sitemap()
+    {
+        $posts = Post::all();
+
+        return response()->json($posts);
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
