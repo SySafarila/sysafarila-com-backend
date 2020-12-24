@@ -22,6 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::prefix('v1')->group(function () {
     Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
+    Route::get('/posts/{post}', [PostsController::class, 'show'])->name('posts.show');
     Route::post('/posts', [PostsController::class, 'store'])->name('posts.store')->middleware('origin');
     Route::post('/auth/reg', [AuthController::class, 'register']);
     Route::get('/origin', function () {

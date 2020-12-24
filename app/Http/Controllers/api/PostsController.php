@@ -64,4 +64,9 @@ class PostsController extends Controller
             'message' => 'Store successfully !'
         ]);
     }
+
+    public function show(Post $post)
+    {
+        return response()->json($post);
+    }
 }
