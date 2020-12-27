@@ -76,4 +76,32 @@ class PostsController extends Controller
     {
         return response()->json($post);
     }
+
+    public function update(Post $post, Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'body' => 'required',
+            'user_email' => 'required|email'
+        ]);
+
+        // return $validator;
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'errors' => $validator->messages()
+            ], 200);
+        }
+
+        $post->update([
+            'title' => $request->title,
+            'body' => $request->body,
+            'user_email' => $request->user_email,
+        ]);
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Post updated !'
+        ]);
+    }
 }
