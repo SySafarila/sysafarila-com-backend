@@ -77,8 +77,19 @@ class PostsController extends Controller
         return response()->json($post);
     }
 
+    public function delete(Post $post)
+    {
+        $post->delete();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Post deleted !'
+        ]);
+    }
+
     public function update(Post $post, Request $request)
     {
+        // return $request;
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'body' => 'required',

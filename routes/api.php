@@ -24,8 +24,10 @@ Route::prefix('v1')->group(function () {
     Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
     Route::get('/posts/sitemap', [PostsController::class, 'sitemap'])->name('posts.sitemap');
     Route::get('/posts/{post}', [PostsController::class, 'show'])->name('posts.show');
+
     Route::post('/posts', [PostsController::class, 'store'])->name('posts.store')->middleware('origin');
-    Route::patch('/posts/{post}', [PostsController::class, 'update'])->name('posts.update')->middleware('origin');
+    Route::post('/posts/{post}/update', [PostsController::class, 'update'])->name('posts.update')->middleware('origin');
+    Route::post('/posts/{post}/delete', [PostsController::class, 'delete'])->name('posts.delete')->middleware('origin');
     Route::post('/auth/reg', [AuthController::class, 'register']);
     Route::get('/origin', function () {
         return request()->server('HTTP_REFERER');
