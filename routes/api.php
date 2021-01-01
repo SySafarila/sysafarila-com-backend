@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::prefix('v1')->group(function () {
     // Post GET|HEAD
@@ -30,10 +30,12 @@ Route::prefix('v1')->group(function () {
     Route::post('/posts', [PostsController::class, 'store'])->name('posts.store')->middleware('origin');
     Route::patch('/posts/{post}', [PostsController::class, 'update'])->name('posts.update')->middleware('origin');
     Route::delete('/posts/{post}', [PostsController::class, 'delete'])->name('posts.delete')->middleware('origin');
+
+    // POST Auth
     Route::post('/auth/reg', [AuthController::class, 'register']);
 
     // Origin GET|HEAD
-    Route::get('/origin', function () {
-        return request()->server('HTTP_REFERER');
-    });
+    // Route::get('/origin', function () {
+    //     return request()->server('HTTP_REFERER');
+    // });
 });
