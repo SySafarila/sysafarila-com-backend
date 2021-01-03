@@ -31,7 +31,7 @@ Route::prefix('v1')->group(function () {
     Route::patch('/posts/{post}', [PostsController::class, 'update'])->name('posts.update')->middleware('origin');
     Route::delete('/posts/{post}', [PostsController::class, 'delete'])->name('posts.delete')->middleware('origin');
 
-    // POST Auth
+    // Auth POST
     Route::post('/auth/reg', [AuthController::class, 'register']);
 
     // Origin GET|HEAD
