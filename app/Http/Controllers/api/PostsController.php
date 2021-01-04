@@ -12,7 +12,11 @@ class PostsController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('origin');
+        $this->middleware('origin', ['except' => [
+            'index',
+            'sitemap',
+            'show'
+        ]]);
     }
 
     public function index()

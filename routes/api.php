@@ -27,9 +27,9 @@ Route::prefix('v1')->group(function () {
     Route::get('/posts/{post}', [PostsController::class, 'show'])->name('posts.show');
 
     // Post PATCH, POST, DELETE
-    Route::post('/posts', [PostsController::class, 'store'])->name('posts.store')->middleware('origin');
-    Route::patch('/posts/{post}', [PostsController::class, 'update'])->name('posts.update')->middleware('origin');
-    Route::delete('/posts/{post}', [PostsController::class, 'delete'])->name('posts.delete')->middleware('origin');
+    Route::post('/posts', [PostsController::class, 'store'])->name('posts.store');
+    Route::patch('/posts/{post}', [PostsController::class, 'update'])->name('posts.update');
+    Route::delete('/posts/{post}', [PostsController::class, 'delete'])->name('posts.delete');
 
     // Auth POST
     Route::post('/auth/reg', [AuthController::class, 'register']);
